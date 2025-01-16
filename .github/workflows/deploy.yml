@@ -36,7 +36,8 @@ jobs:
           cp -r assets dist/
           cp -r components dist/
           cp -r src dist/
-          cp style.css dist/
+          cp -r src apps/
+          cp -r src research/
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
