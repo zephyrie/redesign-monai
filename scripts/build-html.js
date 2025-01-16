@@ -2,14 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const { minify } = require('html-minifier');
 const chokidar = require('chokidar');
+const glob = require('glob');
 
 const COMPONENTS_DIR = 'components';
-const HTML_FILES = [
-    'index.html', 'core.html', 'docs.html', 'about.html', 
-    'label.html', 'start.html', 'deploy.html', 'started.html',
-    'community.html', 'model-zoo.html', 'mayo-case-study.html', '404.html',
-    'wg/federated_learning.html'
-];
 
 const minifyOptions = {
     collapseWhitespace: true,
@@ -49,25 +44,33 @@ function loadComponents() {
     return components;
 }
 
+function findAllHtmlFiles() {
+    // Find all HTML files in the root and subdirectories, excluding the components directory
+    return glob.sync('**/*.html', {
+        ignore: ['node_modules/**', 'dist/**', 'components/**'],
+        nodir: true
+    });
+}
+
 function buildPages() {
     const components = loadComponents();
+    const htmlFiles = findAllHtmlFiles();
     
-    HTML_FILES.forEach(file => {
+    htmlFiles.forEach(file => {
         try {
             const template = fs.readFileSync(file, 'utf8');
             const processed = processTemplate(template, components);
             
-            // Create dist directory if it doesn't exist
-            if (!fs.existsSync('dist')) {
-                fs.mkdirSync('dist');
+            // Create dist directory and any necessary subdirectories
+            const distPath = path.join('dist', path.dirname(file));
+            if (!fs.existsSync(distPath)) {
+                fs.mkdirSync(distPath, { recursive: true });
             }
             
             fs.writeFileSync(path.join('dist', file), processed);
             console.log(`Built ${file}`);
         } catch (err) {
-            if (err.code !== 'ENOENT') {
-                console.error(`Error processing ${file}:`, err);
-            }
+            console.error(`Error processing ${file}:`, err);
         }
     });
 }
@@ -79,8 +82,8 @@ if (process.argv.includes('--watch')) {
     // Initial build
     buildPages();
     
-    // Watch HTML files and components
-    const watcher = chokidar.watch([...HTML_FILES, path.join(COMPONENTS_DIR, '*.html')], {
+    // Watch all HTML files and components
+    const watcher = chokidar.watch(['**/*.html', '!node_modules/**', '!dist/**'], {
         persistent: true
     });
     
