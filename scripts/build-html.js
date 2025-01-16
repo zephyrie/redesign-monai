@@ -5,6 +5,7 @@ const chokidar = require('chokidar');
 const glob = require('glob');
 
 const COMPONENTS_DIR = 'components';
+const DIST_DIR = 'dist';
 
 const minifyOptions = {
     collapseWhitespace: true,
@@ -16,6 +17,50 @@ const minifyOptions = {
     minifyJS: true,
     minifyCSS: true
 };
+
+function ensureDirectoryExists(dir) {
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+    }
+}
+
+function copyDirectory(src, dest) {
+    ensureDirectoryExists(dest);
+    
+    const entries = fs.readdirSync(src, { withFileTypes: true });
+    
+    for (const entry of entries) {
+        const srcPath = path.join(src, entry.name);
+        const destPath = path.join(dest, entry.name);
+        
+        if (entry.isDirectory()) {
+            copyDirectory(srcPath, destPath);
+        } else {
+            fs.copyFileSync(srcPath, destPath);
+        }
+    }
+}
+
+function copyStaticAssets() {
+    // Ensure dist directory exists
+    ensureDirectoryExists(DIST_DIR);
+    
+    // List of directories to copy
+    const assetDirs = [
+        'assets',
+        'images',
+        'apps',
+        'research'
+    ];
+    
+    // Copy each directory if it exists
+    assetDirs.forEach(dir => {
+        if (fs.existsSync(dir)) {
+            copyDirectory(dir, path.join(DIST_DIR, dir));
+            console.log(`Copied ${dir} to dist`);
+        }
+    });
+}
 
 function replaceIncludes(content, components) {
     return content.replace(/<!-- #include file="\/components\/(.*?)" -->/g, (match, filename) => {
@@ -56,23 +101,27 @@ function buildPages() {
     const components = loadComponents();
     const htmlFiles = findAllHtmlFiles();
     
+    // Ensure dist directory exists
+    ensureDirectoryExists(DIST_DIR);
+    
     htmlFiles.forEach(file => {
         try {
             const template = fs.readFileSync(file, 'utf8');
             const processed = processTemplate(template, components);
             
             // Create dist directory and any necessary subdirectories
-            const distPath = path.join('dist', path.dirname(file));
-            if (!fs.existsSync(distPath)) {
-                fs.mkdirSync(distPath, { recursive: true });
-            }
+            const distPath = path.join(DIST_DIR, path.dirname(file));
+            ensureDirectoryExists(distPath);
             
-            fs.writeFileSync(path.join('dist', file), processed);
+            fs.writeFileSync(path.join(DIST_DIR, file), processed);
             console.log(`Built ${file}`);
         } catch (err) {
             console.error(`Error processing ${file}:`, err);
         }
     });
+    
+    // Copy all static assets
+    copyStaticAssets();
 }
 
 // Watch mode
@@ -82,14 +131,29 @@ if (process.argv.includes('--watch')) {
     // Initial build
     buildPages();
     
-    // Watch all HTML files and components
-    const watcher = chokidar.watch(['**/*.html', '!node_modules/**', '!dist/**'], {
+    // Watch all HTML files, components, and static assets
+    const watcher = chokidar.watch([
+        '**/*.html',
+        'assets/**/*',
+        'images/**/*',
+        'apps/**/*',
+        'research/**/*'
+    ], {
+        ignored: ['node_modules/**', 'dist/**'],
         persistent: true
     });
     
     watcher.on('change', (filepath) => {
         console.log(`File ${filepath} changed`);
-        buildPages();
+        if (filepath.endsWith('.html')) {
+            buildPages();
+        } else {
+            // For non-HTML files, just copy the changed file to dist
+            const destPath = path.join(DIST_DIR, filepath);
+            ensureDirectoryExists(path.dirname(destPath));
+            fs.copyFileSync(filepath, destPath);
+            console.log(`Copied changed file: ${filepath}`);
+        }
     });
 } else {
     // Single build
