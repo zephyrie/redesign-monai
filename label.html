@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+
+<!-- #include file="components/head.html" -->
+<script>
+    document.head.innerHTML = document.head.innerHTML
+        .replace('${title}', 'MONAI Label')
+        .replace('${description}', 'MONAI Label is an intelligent image labeling and learning tool that uses AI assistance to reduce the time and effort of annotating new datasets. By utilizing user interactions, MONAI Label trains an AI model for a specific task and continuously learns and updates that model as it receives additional annotated images.')
+        .replace('${canonical_url}', 'https://monai.io/label.html');
+</script>
+
+<body>
+    <!-- #include file="components/header.html" -->
+
+    <main>
+        <!-- Overview Section -->
+        <section id="overview" class="py-16">
+            <div class="container">
+                <div class="grid grid-cols-1 lg:grid-cols-2 space-x-4 place-items-center">
+                    <div>
+                        <h1 class="mb-6 section-heading">MONAI Label</h1>
+                        <div class="w-full lg:3/5 pb-4">
+                            <p class="py-2">MONAI Label is an intelligent image labeling and learning tool that uses AI assistance to reduce the time and effort of annotating new datasets. By utilizing user interactions, MONAI Label trains an AI model for a specific task and continuously learns and updates that model as it receives additional annotated images.</p>
+                            <p>MONAI Label provides multiple sample applications that include state-of-the-art interactive segmentation approaches like DeepGrow and DeepEdit. These sample applications are ready to use out of the box and let you quickly get started on annotating with minimal effort. Developers can also build their own MONAI Label applications with creative algorithms.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-4 py-8">
+                            <a class="brand-btn hover:bg-brand-primary hover:text-white transition-colors duration-300" href="https://docs.monai.io/projects/label/en/latest/quickstart.html" target="_blank" rel="noopener noreferrer">Quickstart Guide</a>
+                            <a class="brand-btn hover:bg-brand-primary hover:text-white transition-colors duration-300" href="https://github.com/Project-MONAI/MONAILabel" target="_blank" rel="noopener noreferrer">Documentation</a>
+                        </div>
+                        <div>
+                            <h2 class="text-brand-primary font-semibold">Install:</h2>
+                            <code class="block p-4 bg-neutral-lightgray w-72 rounded select-all">$ pip install monailabel</code>
+                        </div>
+                    </div>
+                    <div>
+                        <img class="hidden lg:block rounded-lg shadow-lg" src="assets/img/documentation header.png" alt="MONAI Label Documentation Header">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-12 bg-brand-light">
+            <div class="container py-4 lg:py-16">
+                <div class="text-center w-full lg:w-1/2 mx-auto pb-8">
+                    <h2 class="text-brand-primary text-4xl font-bold">Focuses on Researchers and Data Scientists</h2>
+                    <p class="py-4">MONAI Core is focused on bringing the state-of-the-art to the broader medical community. You can see some of these features below and start using them today through our tutorials.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3">
+                    <div class="text-center border-b-2 border-r-0 lg:border-b-0 lg:border-r-2 border-neutral-gray2 p-6 hover:bg-white transition-colors duration-300">
+                        <h2 class="text-2xl font-bold pb-4">Continuous Training Loop</h2>
+                        <h3 class="text-lg font-bold pb-4 text-brand-primary">Fine-tune your model while annotating</h3>
+                        <p class="pb-4">Quickly start creating an annotation model by utilize the continous training loop with MONAI Label.</p>
+                    </div>
+                    <div class="text-center border-b-2 border-r-0 lg:border-b-0 lg:border-r-2 border-neutral-gray2 p-6 hover:bg-white transition-colors duration-300">
+                        <h2 class="text-2xl font-bold pb-4">Multiple Supported Viewers</h2>
+                        <h3 class="text-lg font-bold pb-4 text-brand-primary">3D Slicer, OHIF, MITK, DSA, and QuPath</h3>
+                        <p class="pb-4">Whether you're annotating Radiology or Pathology images, MONAI Label has viewer integration to get you started quickly.</p>
+                    </div>
+                    <div class="text-center p-6 hover:bg-white transition-colors duration-300">
+                        <h2 class="text-2xl font-bold pb-4">Interactive and Non-interactive Annotation Methods</h2>
+                        <h3 class="text-lg font-bold pb-4 text-brand-primary">Multiple Algorithms to Choose</h3>
+                        <p class="pb-4">Utilize interactive methods to get started quickly or choose an existing model that already works great.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases Section -->
+        <section class="py-12 bg-neutral-purewhite">
+            <div class="container">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-4 place-items-center">
+                    <div class="w-2/3">
+                        <h2 class="text-center text-brand-primary text-4xl font-bold pb-8">Which Use Case are you working on?</h2>
+                    </div>
+                    <div>
+                        <p class="mx-auto pb-12 text-center lg:text-left">MONAI Label has integration for both Radiology and Pathology Images. By enabling a workflow that integrates directly into a Radiologist or Pathologist viewer and allowing for continuous learning, MONAI aims to accelerate the adoption of Deep Learning in Medical Imaging.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-y-12 gap-x-0 lg:gap-y-24 lg:gap-x-24 p-8 sm:p-12 lg:p-24">
+                    <div class="shadow-xl rounded-3xl group hover:shadow-2xl transition-shadow duration-300">
+                        <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-t-3xl">
+                            <img class="object-cover transform transition-transform duration-300 group-hover:scale-105" src="assets/img/mri_label.png" alt="Radiology Use Case">
+                        </div>
+                        <h2 class="text-2xl font-bold text-brand-primary text-center mt-8">Radiology</h2>
+                        <p class="px-12 py-4 text-center">If you're working in Radiology, start using OHIF or 3D Slicer, which have extensions built to integrate with MONAI Label. You can bring your DICOM or Nifti images into the viewer and start annotating today with models like DeepEdit.</p>
+                        <div class="text-center my-8">
+                            <a href="https://github.com/Project-MONAI/MONAILabel/tree/main/sample-apps/radiology" target="_blank" rel="noopener noreferrer" class="inline-block">
+                                <button class="text-brand-primary text-xl font-bold hover:text-brand-dark transition-colors duration-300">Sample Applications ></button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="shadow-xl rounded-3xl group hover:shadow-2xl transition-shadow duration-300">
+                        <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-t-3xl">
+                            <img class="object-cover transform transition-transform duration-300 group-hover:scale-105" src="assets/img/path_label.png" alt="Pathology Use Case">
+                        </div>
+                        <h2 class="text-2xl font-bold text-brand-primary text-center mt-8">Pathology</h2>
+                        <p class="px-12 py-4 text-center">If you're working in Pathology, we've integrated with Digital Slide Archive (DSA), QuPath, and CVAT viewers. MONAI Label is creating a starting point for Pathologists and Data scientists to work together and utilize the benefits of Deep Learning.</p>
+                        <div class="text-center my-8">
+                            <a href="https://github.com/Project-MONAI/MONAILabel/tree/main/sample-apps/pathology" target="_blank" rel="noopener noreferrer" class="inline-block">
+                                <button class="text-brand-primary text-xl font-bold hover:text-brand-dark transition-colors duration-300">Sample Applications ></button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="shadow-xl rounded-3xl group hover:shadow-2xl transition-shadow duration-300">
+                        <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-t-3xl">
+                            <img class="object-cover transform transition-transform duration-300 group-hover:scale-105" src="assets/img/endoscopy.png" alt="Endoscopy Use Case">
+                        </div>
+                        <h2 class="text-2xl font-bold text-brand-primary text-center mt-8">Endoscopy</h2>
+                        <p class="px-12 py-4 text-center">If you're working in Endoscopy, we've integrated with CVAT viewer and enabled a fully automated active learning workflow to train a model. MONAI Label enables users to use interactive, segmentation, and classification models over 2D images.</p>
+                        <div class="text-center my-8">
+                            <a href="https://github.com/Project-MONAI/MONAILabel/tree/main/sample-apps/endoscopy" target="_blank" rel="noopener noreferrer" class="inline-block">
+                                <button class="text-brand-primary text-xl font-bold hover:text-brand-dark transition-colors duration-300">Sample Applications ></button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Getting Started Section -->
+        <section class="py-12 bg-neutral-lightgray">
+            <div class="container">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
+                    <div>
+                        <h2 class="text-center text-brand-primary text-4xl font-bold pb-8">Get started with only a few commands</h2>
+                        <p class="w-2/3 mx-auto text-center pb-8">MONAI Label makes it easy to get started. By following the commands on the right, you'll:</p>
+                        <div class="bg-neutral-purewhite p-4 rounded-xl border-2 border-brand-primary w-2/3 mx-auto text-center lg:text-left">
+                            <ul class="lg:list-disc lg:list-inside space-y-2">
+                                <li class="underline underline-offset-4 hover:text-brand-primary transition-colors duration-300">Install MONAI Label</li>
+                                <li class="underline underline-offset-4 hover:text-brand-primary transition-colors duration-300">Download a Sample Radiology App</li>
+                                <li class="underline underline-offset-4 hover:text-brand-primary transition-colors duration-300">Download a Sample Dataset</li>
+                                <li class="underline underline-offset-4 hover:text-brand-primary transition-colors duration-300">Start the MONAI Label Server</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="text-center mt-8 lg:mt-0">
+                        <p class="font-bold text-xl mb-4 text-brand-primary hidden lg:block">Launch the MONAI Label Server in 4 steps</p>
+                        <div class="shadow-2xl rounded-lg overflow-hidden">
+                            <img src="assets/img/monai_label_server_start.png" alt="MONAI Label Server Setup Steps" class="w-full">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Learning Section -->
+        <section class="py-12 bg-brand-light">
+            <div class="container py-4 lg:py-16">
+                <div class="text-center w-full lg:w-1/2 mx-auto pb-8">
+                    <h2 class="text-brand-primary text-4xl font-bold">Designed with Active Learning for Continuous Training</h2>
+                    <p class="py-4">To demonstrate the power of MONAI Label and the Continous Training Loop plus Active Learning, we'll walk through how you'll utilize these techniques as you begin to annotate your data.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:px-24">
+                    <div class="mx-auto">
+                        <img src="assets/img/Active Learning Framework.png" alt="Active Learning Framework Diagram" class="rounded-lg shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section class="py-12 bg-neutral-purewhite">
+            <div class="container py-4 lg:py-16">
+                <div class="text-center w-full lg:w-1/2 mx-auto pb-8">
+                    <h2 class="text-brand-primary text-4xl font-bold">Get Involved in the Community</h2>
+                    <p class="py-4">Below are ways that you can start using, contributing, and interacting with other members of the MONAI Label community!</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="text-center p-6 shadow-lg rounded-lg border-2 border-neutral-lightgray hover:border-brand-primary transition-colors duration-300">
+                        <h3 class="text-lg font-bold pb-4 text-brand-primary">GitHub</h3>
+                        <p class="pb-4">Start contributing to the MONAI Label repo by submiting a bug, requesting a feature, or starting a discussion today!</p>
+                        <div class="flex justify-center">
+                            <a class="brand-btn hover:bg-brand-primary hover:text-white transition-colors duration-300" href="https://github.com/Project-MONAI/MONAILabel/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribute</a>
+                        </div>
+                    </div>
+                    <div class="text-center p-6 shadow-lg rounded-lg border-2 border-neutral-lightgray hover:border-brand-primary transition-colors duration-300">
+                        <h3 class="text-lg font-bold pb-4 text-brand-primary">Sample Applications</h3>
+                        <p class="pb-4">We have sample applications for various domains to help you quickly get started. You can also use these sample applications as the basis for your own MONAI Label Applications.</p>
+                        <div class="flex justify-center">
+                            <a class="brand-btn hover:bg-brand-primary hover:text-white transition-colors duration-300" href="https://github.com/Project-MONAI/MONAILabel/tree/main/sample-apps" target="_blank" rel="noopener noreferrer">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="text-center p-6 shadow-lg rounded-lg border-2 border-neutral-lightgray hover:border-brand-primary transition-colors duration-300">
+                        <h3 class="text-lg font-bold pb-4 text-brand-primary">Slack</h3>
+                        <p class="pb-4">Having trouble? Trying to find out where to contribute? Want to share your cool project? Join our MONAI Slack and chat with the community.</p>
+                        <div class="flex justify-center">
+                            <a class="brand-btn hover:bg-brand-primary hover:text-white transition-colors duration-300" href="https://forms.gle/QTxJq3hFictp31UM9" target="_blank" rel="noopener noreferrer">Socialize</a>
+                        </div>
+                    </div>
+                    <div class="text-center p-6 shadow-lg rounded-lg border-2 border-neutral-lightgray hover:border-brand-primary transition-colors duration-300">
+                        <h3 class="text-lg font-bold pb-4 text-brand-primary">Documentation</h3>
+                        <p class="pb-4">Ready to get started using MONAI Label? You can find all of our documentation to help get you started or answer any of your questions!</p>
+                        <div class="flex justify-center">
+                            <a class="brand-btn hover:bg-brand-primary hover:text-white transition-colors duration-300" href="https://docs.monai.io/projects/label/en/latest/index.html" target="_blank" rel="noopener noreferrer">Deep Dive</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- #include file="components/footer.html" -->
+    <!-- #include file="components/scripts.html" -->
+</body>
+</html>
