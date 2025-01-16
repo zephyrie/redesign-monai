@@ -41,7 +41,7 @@ jobs:
       - name: Copy static assets
         run: |
           cp -r assets dist/
-          cp style.css dist/
+          cp -r src/style.css dist/
           cp -r apps dist/ || true
           cp -r research dist/ || true
 
