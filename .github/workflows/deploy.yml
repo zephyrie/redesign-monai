@@ -23,21 +23,32 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm install -g html-includes
 
       - name: Create dist directory
         run: mkdir -p dist
 
-      - name: Copy HTML files
-        run: cp *.html dist/
+      - name: Process HTML includes
+        run: |
+          for file in *.html; do
+            if [ "$file" != "404.html" ]; then
+              html-includes --src "$file" --dest "dist/$file"
+            fi
+          done
 
-      - name: Copy assets
+      - name: Copy static assets
         run: |
           cp -r assets dist/
-          cp -r components dist/
-          cp -r src dist/
-          cp -r src apps/
-          cp -r src research/
+          cp style.css dist/
+          cp -r apps dist/ || true
+          cp -r research dist/ || true
+
+      - name: Update paths in HTML files
+        run: |
+          find dist -type f -name "*.html" -exec sed -i 's/href="\//href="/g' {} +
+          find dist -type f -name "*.html" -exec sed -i 's/src="\//src="/g' {} +
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
