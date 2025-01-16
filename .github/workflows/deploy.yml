@@ -34,6 +34,7 @@ jobs:
           cp -r apps dist/ || true
           cp -r research dist/ || true
           cp -r images dist/ || true
+          cp -r src/style.css dist/ || true
           cp -r assets/css dist/assets/ || true
           cp -r assets/js dist/assets/ || true
           cp -r assets/fonts dist/assets/ || true
