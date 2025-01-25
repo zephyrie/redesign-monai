@@ -1,8 +1,8 @@
 <!-- Header Component -->
 <header id="header-wrap" class="relative border-b border-neutral-neutral_gray2">
   <div class="navigation top-0 left-0 w-full z-30">
-    <div class="container">
-      <nav class="flex items-center justify-between py-4" x-data="{ open: false, one: false, two: false, three: false }">
+    <div class="container relative">
+      <nav class="flex items-center justify-between py-4" x-data="{ isOpen: false, isMenuOpen: false }">
         <!-- Logo -->
         <a class="flex-shrink-0" href="index.html">
           <img class="h-8" src="assets/img/MONAI-logo_color.png" alt="Logo">
@@ -11,102 +11,87 @@
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex items-center space-x-8">
           <a class="text-gray-700 hover:text-brand-primary transition-colors" href="index.html">Home</a>
-          
-          <div class="relative" @click.away="one = false">
-            <button @click="one = !one" class="flex items-center text-gray-700 hover:text-brand-primary transition-colors">
-              Frameworks
-              <svg class="w-4 h-4 ml-1" :class="{'rotate-180': one}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-              </svg>
-            </button>
-            <div x-show="one" x-transition class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-              <a href="core.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MONAI Core</a>
-              <a href="deploy.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MONAI Deploy</a>
-              <a href="label.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MONAI Label</a>
-            </div>
-          </div>
-
-          <div class="relative" @click.away="two = false">
-            <button @click="two = !two" class="flex items-center text-gray-700 hover:text-brand-primary transition-colors">
-              Docs
-              <svg class="w-4 h-4 ml-1" :class="{'rotate-180': two}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-              </svg>
-            </button>
-            <div x-show="two" x-transition class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-              <a href="https://docs.monai.io/projects/label/en/latest/index.html" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MONAI Label Docs</a>
-              <a href="https://docs.monai.io/en/stable/" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MONAI Core Docs</a>
-              <a href="https://docs.monai.io/projects/monai-deploy-app-sdk/en/latest/" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MONAI Deploy Docs</a>
-            </div>
-          </div>
-
-          <div class="relative" @click.away="three = false">
-            <button @click="three = !three" class="flex items-center text-gray-700 hover:text-brand-primary transition-colors">
-              Resources
-              <svg class="w-4 h-4 ml-1" :class="{'rotate-180': three}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-              </svg>
-            </button>
-            <div x-show="three" x-transition class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-              <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About Us</a>
-              <a href="started.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Getting Started</a>
-              <a href="community.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Community</a>
-              <a href="https://medium.com/@monai" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Blog</a>
-            </div>
-          </div>
-
+          <a class="text-gray-700 hover:text-brand-primary transition-colors" href="core.html">MONAI Core</a>
+          <a class="text-gray-700 hover:text-brand-primary transition-colors" href="label.html">MONAI Label</a>
+          <a class="text-gray-700 hover:text-brand-primary transition-colors" href="deploy.html">MONAI Deploy</a>
           <a class="text-gray-700 hover:text-brand-primary transition-colors" href="model-zoo.html">Model Zoo</a>
-          <a class="text-gray-700 hover:text-brand-primary transition-colors" href="https://github.com/Project-MONAI" target="_blank">GitHub</a>
+          
+          <div class="relative" @click.away="isMenuOpen = false">
+            <button @click="isMenuOpen = !isMenuOpen" class="flex items-center text-gray-700 hover:text-brand-primary transition-colors">
+              Community
+              <svg class="w-4 h-4 ml-1" :class="{'rotate-180': isMenuOpen}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+            <div x-show="isMenuOpen" x-cloak x-transition class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+              <a href="https://github.com/Project-MONAI" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">GitHub</a>
+              <a href="https://join.slack.com/t/projectmonai/shared_invite/zt-2t7z8e9tu-xE5SPw0TC8LUxyPVpl2WVQ" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Join Slack</a>
+              <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About Us</a>
+              <div class="border-t border-gray-100 mt-2 pt-2">
+                <a href="https://twitter.com/ProjectMONAI" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Twitter</a>
+                <a href="https://linkedin.com/company/projectmonai" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">LinkedIn</a>
+                <a href="https://medium.com/@monai" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Medium</a>
+                <a href="https://www.youtube.com/c/Project-MONAI" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">YouTube</a>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Mobile menu button -->
-        <button @click="open = !open" class="lg:hidden focus:outline-none" type="button">
+        <button @click="isOpen = !isOpen" class="lg:hidden focus:outline-none" type="button">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            <path x-show="!isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            <path x-show="isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
 
         <!-- Mobile menu -->
-        <div x-show="open" class="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 py-2">
-          <div class="container">
-            <a class="block py-2 text-gray-700 hover:text-brand-primary" href="index.html">Home</a>
-            <button @click="one = !one" class="w-full flex items-center justify-between py-2 text-gray-700 hover:text-brand-primary">
-              Frameworks
-              <svg class="w-4 h-4" :class="{'rotate-180': one}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-              </svg>
-            </button>
-            <div x-show="one" class="pl-4">
-              <a href="label.html" class="block py-2 text-gray-700 hover:text-brand-primary">MONAI Label</a>
-              <a href="core.html" class="block py-2 text-gray-700 hover:text-brand-primary">MONAI Core</a>
-              <a href="deploy.html" class="block py-2 text-gray-700 hover:text-brand-primary">MONAI Deploy</a>
+        <div x-show="isOpen" x-cloak 
+             class="lg:hidden fixed inset-0 z-50 bg-white"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 transform -translate-y-2"
+             x-transition:enter-end="opacity-100 transform translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 transform translate-y-0"
+             x-transition:leave-end="opacity-0 transform -translate-y-2">
+          <div class="container py-4">
+            <div class="flex justify-between items-center mb-8">
+              <a class="flex-shrink-0" href="index.html">
+                <img class="h-8" src="assets/img/MONAI-logo_color.png" alt="Logo">
+              </a>
+              <button @click="isOpen = false" class="focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </button>
             </div>
-            <button @click="two = !two" class="w-full flex items-center justify-between py-2 text-gray-700 hover:text-brand-primary">
-              Docs
-              <svg class="w-4 h-4" :class="{'rotate-180': two}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-              </svg>
-            </button>
-            <div x-show="two" class="pl-4">
-              <a href="https://docs.monai.io/projects/label/en/latest/index.html" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">MONAI Label Docs</a>
-              <a href="https://docs.monai.io/en/stable/" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">MONAI Core Docs</a>
-              <a href="https://docs.monai.io/projects/monai-deploy-app-sdk/en/latest/" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">MONAI Deploy Docs</a>
+            <div class="space-y-4">
+              <a class="block py-2 text-gray-700 hover:text-brand-primary text-lg" href="index.html">Home</a>
+              <a class="block py-2 text-gray-700 hover:text-brand-primary text-lg" href="core.html">MONAI Core</a>
+              <a class="block py-2 text-gray-700 hover:text-brand-primary text-lg" href="label.html">MONAI Label</a>
+              <a class="block py-2 text-gray-700 hover:text-brand-primary text-lg" href="deploy.html">MONAI Deploy</a>
+              <a class="block py-2 text-gray-700 hover:text-brand-primary text-lg" href="model-zoo.html">Model Zoo</a>
+              
+              <div class="py-2">
+                <button @click="isMenuOpen = !isMenuOpen" class="w-full flex items-center justify-between py-2 text-gray-700 hover:text-brand-primary text-lg">
+                  Community
+                  <svg class="w-4 h-4" :class="{'rotate-180': isMenuOpen}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                  </svg>
+                </button>
+                <div x-show="isMenuOpen" x-cloak class="pl-4 space-y-2 mt-2">
+                  <a href="https://github.com/Project-MONAI" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">GitHub</a>
+                  <a href="https://join.slack.com/t/projectmonai/shared_invite/zt-2t7z8e9tu-xE5SPw0TC8LUxyPVpl2WVQ" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">Join Slack</a>
+                  <a href="about.html" class="block py-2 text-gray-700 hover:text-brand-primary">About Us</a>
+                  <div class="border-t border-gray-100 mt-2 pt-2">
+                    <a href="https://twitter.com/ProjectMONAI" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">Twitter</a>
+                    <a href="https://linkedin.com/company/projectmonai" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">LinkedIn</a>
+                    <a href="https://medium.com/@monai" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">Blog</a>
+                    <a href="https://www.youtube.com/c/Project-MONAI" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">YouTube</a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <button @click="three = !three" class="w-full flex items-center justify-between py-2 text-gray-700 hover:text-brand-primary">
-              Resources
-              <svg class="w-4 h-4" :class="{'rotate-180': three}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-              </svg>
-            </button>
-            <div x-show="three" class="pl-4">
-              <a href="about.html" class="block py-2 text-gray-700 hover:text-brand-primary">About Us</a>
-              <a href="started.html" class="block py-2 text-gray-700 hover:text-brand-primary">Getting Started</a>
-              <a href="community.html" class="block py-2 text-gray-700 hover:text-brand-primary">Community</a>
-              <a href="https://medium.com/@monai" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">Blog</a>
-            </div>
-            <a class="block py-2 text-gray-700 hover:text-brand-primary" href="model-zoo.html">Model Zoo</a>
-            <a class="block py-2 text-gray-700 hover:text-brand-primary" href="https://github.com/Project-MONAI" target="_blank">GitHub</a>
           </div>
         </div>
       </nav>

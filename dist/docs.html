@@ -1,4 +1,64 @@
-<!doctype html><html lang="en" class="scroll-smooth"><!-- Head Component --><!-- Parameters: title, description, canonical_url --><head><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-QVGBCPFPJ6"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-QVGBCPFPJ6")</script><!-- Required meta tags --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><!-- SEO Meta Tags --><title>${title} | MONAI - Medical Open Network for AI</title><meta name="description" content="${description}"><meta name="keywords" content="MONAI, Medical Imaging, AI, Deep Learning, Healthcare, PyTorch, Open Source"><meta name="author" content="Project MONAI"><!-- Open Graph Meta Tags --><meta property="og:title" content="${title} | MONAI"><meta property="og:description" content="${description}"><meta property="og:type" content="website"><meta property="og:url" content="${canonical_url}"><meta property="og:image" content="https://monai.io/assets/img/MONAI-logo_color.png"><!-- Twitter Card Meta Tags --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@ProjectMONAI"><meta name="twitter:title" content="${title} | MONAI"><meta name="twitter:description" content="${description}"><meta name="twitter:image" content="https://monai.io/assets/img/MONAI-logo_color.png"><!-- Canonical URL --><link rel="canonical" href="${canonical_url}"><!-- Favicon --><link rel="shortcut icon" href="./assets/img/favicon.png" type="image/png"><link rel="apple-touch-icon" href="./assets/img/favicon.png"><!-- Stylesheets --><link rel="stylesheet" href="./assets/css/animate.css"><link rel="stylesheet" href="./assets/css/tailwind.css"><!-- Schema.org Markup --><script type="application/ld+json">{
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<!-- Head Component -->
+<!-- Parameters: title, description, canonical_url -->
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVGBCPFPJ6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QVGBCPFPJ6');
+    </script>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- SEO Meta Tags -->
+    <title>${title} | MONAI - Medical Open Network for AI</title>
+    <meta name="description" content="${description}">
+    <meta name="keywords" content="MONAI, Medical Imaging, AI, Deep Learning, Healthcare, PyTorch, Open Source">
+    <meta name="author" content="Project MONAI">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="${title} | MONAI">
+    <meta property="og:description" content="${description}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="${canonical_url}">
+    <meta property="og:image" content="https://monai.io/assets/img/MONAI-logo_color.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ProjectMONAI">
+    <meta name="twitter:title" content="${title} | MONAI">
+    <meta name="twitter:description" content="${description}">
+    <meta name="twitter:image" content="https://monai.io/assets/img/MONAI-logo_color.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="${canonical_url}">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="./assets/img/favicon.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/tailwind.css">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Alpine.js x-cloak -->
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+    
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "MONAI",
@@ -11,4 +71,337 @@
             "https://www.youtube.com/c/Project-MONAI",
             "https://github.com/Project-MONAI"
         ]
-    }</script></head><script>document.head.innerHTML=document.head.innerHTML.replace("${title}","MONAI - Documentation").replace("${description}","MONAI offers several frameworks, and we are adding to them all the time. Here, you'll find the information you need to decide on what framework works best for your needs.").replace("${canonical_url}","https://monai.io/docs.html")</script><body class="flex flex-col min-h-screen"><!-- Header Component --><header id="header-wrap" class="relative border-b border-neutral-neutral_gray2"><div class="navigation top-0 left-0 w-full z-30"><div class="container"><nav class="flex items-center justify-between py-4" x-data="{ open: false, one: false, two: false, three: false }"><!-- Logo --> <a class="flex-shrink-0" href="index.html"><img class="h-8" src="assets/img/MONAI-logo_color.png" alt="Logo"> </a><!-- Desktop Navigation --><div class="hidden lg:flex items-center space-x-8"><a class="text-gray-700 hover:text-brand-primary transition-colors" href="index.html">Home</a><div class="relative" @click.away="one = false"><button @click="one = !one" class="flex items-center text-gray-700 hover:text-brand-primary transition-colors">Frameworks <svg class="w-4 h-4 ml-1" :class="{'rotate-180': one}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button><div x-show="one" x-transition class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50"><a href="core.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MONAI Core</a> <a href="deploy.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MONAI Deploy</a> <a href="label.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MONAI Label</a></div></div><div class="relative" @click.away="two = false"><button @click="two = !two" class="flex items-center text-gray-700 hover:text-brand-primary transition-colors">Docs <svg class="w-4 h-4 ml-1" :class="{'rotate-180': two}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button><div x-show="two" x-transition class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50"><a href="https://docs.monai.io/projects/label/en/latest/index.html" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MONAI Label Docs</a> <a href="https://docs.monai.io/en/stable/" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MONAI Core Docs</a> <a href="https://docs.monai.io/projects/monai-deploy-app-sdk/en/latest/" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MONAI Deploy Docs</a></div></div><div class="relative" @click.away="three = false"><button @click="three = !three" class="flex items-center text-gray-700 hover:text-brand-primary transition-colors">Resources <svg class="w-4 h-4 ml-1" :class="{'rotate-180': three}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button><div x-show="three" x-transition class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50"><a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About Us</a> <a href="started.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Getting Started</a> <a href="community.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Community</a> <a href="https://medium.com/@monai" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Blog</a></div></div><a class="text-gray-700 hover:text-brand-primary transition-colors" href="model-zoo.html">Model Zoo</a> <a class="text-gray-700 hover:text-brand-primary transition-colors" href="https://github.com/Project-MONAI" target="_blank">GitHub</a></div><!-- Mobile menu button --> <button @click="open = !open" class="lg:hidden focus:outline-none" type="button"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/><path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button><!-- Mobile menu --><div x-show="open" class="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 py-2"><div class="container"><a class="block py-2 text-gray-700 hover:text-brand-primary" href="index.html">Home</a> <button @click="one = !one" class="w-full flex items-center justify-between py-2 text-gray-700 hover:text-brand-primary">Frameworks <svg class="w-4 h-4" :class="{'rotate-180': one}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button><div x-show="one" class="pl-4"><a href="label.html" class="block py-2 text-gray-700 hover:text-brand-primary">MONAI Label</a> <a href="core.html" class="block py-2 text-gray-700 hover:text-brand-primary">MONAI Core</a> <a href="deploy.html" class="block py-2 text-gray-700 hover:text-brand-primary">MONAI Deploy</a></div><button @click="two = !two" class="w-full flex items-center justify-between py-2 text-gray-700 hover:text-brand-primary">Docs <svg class="w-4 h-4" :class="{'rotate-180': two}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button><div x-show="two" class="pl-4"><a href="https://docs.monai.io/projects/label/en/latest/index.html" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">MONAI Label Docs</a> <a href="https://docs.monai.io/en/stable/" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">MONAI Core Docs</a> <a href="https://docs.monai.io/projects/monai-deploy-app-sdk/en/latest/" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">MONAI Deploy Docs</a></div><button @click="three = !three" class="w-full flex items-center justify-between py-2 text-gray-700 hover:text-brand-primary">Resources <svg class="w-4 h-4" :class="{'rotate-180': three}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button><div x-show="three" class="pl-4"><a href="about.html" class="block py-2 text-gray-700 hover:text-brand-primary">About Us</a> <a href="started.html" class="block py-2 text-gray-700 hover:text-brand-primary">Getting Started</a> <a href="community.html" class="block py-2 text-gray-700 hover:text-brand-primary">Community</a> <a href="https://medium.com/@monai" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">Blog</a></div><a class="block py-2 text-gray-700 hover:text-brand-primary" href="model-zoo.html">Model Zoo</a> <a class="block py-2 text-gray-700 hover:text-brand-primary" href="https://github.com/Project-MONAI" target="_blank">GitHub</a></div></div></nav></div></div></header><main class="flex-grow"><!-- Documentation Hero Section --><section id="hero" class="py-16"><div class="container"><div class="flex flex-wrap items-center"><div class="w-full lg:w-1/2"><h1 class="mb-6 section-heading">Documentation</h1><div class="w-full sm:3/5"><p class="py-2">MONAI offers several frameworks, and we are adding to them all the time. Here, you'll find the information you need to decide on what framework works best for your needs.</p></div></div><div class="flex justify-center w-full lg:w-1/2"><img class="hidden lg:block lg:w-3/4 xl:auto" src="assets/img/documentation header.png" alt="Documentation illustration"></div></div></div></section><section class="py-8 bg-brand-light"><div class="container py-4 lg:py-16"><div class="grid grid-cols-12 gap-8"><div class="hidden lg:block col-span-3 justify-self-center self-center"><div class="flex square rounded-full justify-center bg-white p-8 shadow-lg hover:shadow-xl transition-shadow"><img src="assets/img/pytorch_icon_large.png" alt="PyTorch Icon" class="w-full h-auto"></div></div><div class="col-span-12 lg:col-span-6 lg:pl-8"><h2 class="text-brand-primary text-2xl font-semibold">MONAI Core</h2><p class="py-4">Domain-optimized foundational capabilities for developing healthcare imaging training workflows in a native PyTorch paradigm.</p><a href="https://docs.monai.io/en/stable/" target="_blank" rel="noopener noreferrer" class="inline-block"><button class="rounded-full my-4 px-10 py-4 mt-4 text-brand-primary bg-brand-light border-2 border-brand-primary hover:bg-brand-primary hover:text-white transition-colors duration-300">Go to Docs</button></a></div></div></div></section><section class="py-8 bg-neutral-lightgray"><div class="container py-4 lg:py-16"><div class="grid grid-cols-12 gap-8"><div class="hidden lg:block col-span-3 justify-self-center self-center"><div class="flex square rounded-full justify-center bg-white p-8 shadow-lg hover:shadow-xl transition-shadow"><img src="assets/img/bookmark_icon_large.png" alt="Label Icon" class="w-full h-auto"></div></div><div class="col-span-12 lg:col-span-6 lg:pl-8"><h2 class="text-brand-primary text-2xl font-semibold">MONAI Label</h2><p class="py-4">Image Labeling and Learning Tool that helps create annotated datasets and build AI models in a standardized MONAI paradigm.</p><a href="https://docs.monai.io/projects/label/en/latest/" target="_blank" rel="noopener noreferrer" class="inline-block"><button class="rounded-full my-4 px-10 py-4 mt-4 text-brand-primary bg-neutral-lightgray border-2 border-brand-primary hover:bg-brand-primary hover:text-white transition-colors duration-300">Go to Docs</button></a></div></div></div></section><section class="py-8"><div class="container py-4 lg:py-16"><div class="grid grid-cols-12 gap-8"><div class="hidden lg:block col-span-3 justify-self-center self-center"><div class="flex square rounded-full justify-center bg-brand-light p-8 shadow-lg hover:shadow-xl transition-shadow"><img src="assets/img/stack_icon_large.png" alt="Deploy Icon" class="w-full h-auto"></div></div><div class="col-span-12 lg:col-span-6 lg:pl-8"><h2 class="text-brand-primary text-2xl font-semibold">MONAI Deploy</h2><p class="py-4">A framework and associated tools to design, verify and analyze the performance of AI-driven applications in the healthcare domain.</p><a href="https://docs.monai.io/projects/monai-deploy-app-sdk/en/latest/" target="_blank" rel="noopener noreferrer" class="inline-block"><button class="rounded-full my-4 px-10 py-4 mt-4 text-brand-primary border-2 border-brand-primary hover:bg-brand-primary hover:text-white transition-colors duration-300">Go to Docs</button></a></div></div></div></section></main><!-- Footer Component --><footer id="footer" class="bg-neutral-lightgray py-2 border-t border-neutral-light_gray"><div class="container"><div class="flex flex-wrap items-center justify-between"><div class="w-auto"><div class="mx-3"><div class="footer-logo"><a href="index.html"><img src="./assets/img/MONAI-logo_color.png" alt="MONAI Logo"></a></div></div></div><div class="hidden lg:block w-auto"><div class="mx-3 text-black"><ul class="flex justify-between"><li class="px-4"><a href="about.html" class="footer-links">About Us</a></li><li class="px-4"><a href="started.html" class="footer-links">Get Started</a></li><li class="px-4"><a href="community.html" class="footer-links">Community</a></li><li class="px-4"><a href="https://medium.com/@monai" class="footer-links">Blog</a></li><li class="px-4"><a href="docs.html" class="footer-links">Docs</a></li><li class="px-4"><a href="https://github.com/Project-MONAI" class="footer-links">GitHub</a></li></ul></div></div><div class="w-auto"><div class="mx-3"><ul class="social-icons flex justify-end"><li class="mx-2"><a href="https://twitter.com/ProjectMONAI" aria-label="Twitter"><i><img src="./assets/img/twitter_icon_square.png" alt="Twitter Icon"></i></a></li><li class="mx-2"><a href="https://medium.com/@monai" aria-label="Medium"><i><img src="./assets/img/medium_icon_square.png" alt="Medium Icon"></i></a></li><li class="mx-2"><a href="https://www.youtube.com/c/Project-MONAI" aria-label="YouTube"><i><img src="./assets/img/youtube_icon_square.png" alt="YouTube Icon"></i></a></li></ul></div></div></div></div></footer><!-- Go to Top Link --> <a href="#" class="back-to-top w-10 h-10 fixed bottom-0 right-0 mb-5 mr-5 flex items-center justify-center rounded-full border border-solid border-brand-dark text-white text-lg z-20" aria-label="Back to top"><i class="transform -rotate-90"><img src="./assets/img/ic_arrow_right.png" alt="Arrow Up"> </i></a><!-- Scripts Component --><!-- Common JavaScript Files --><script src="./assets/js/wow.js"></script><script src="./assets/js/particles.min.js"></script><script src="./assets/js/countUp.min.js"></script><script src="./assets/js/main.js"></script><script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script><!-- Initialize WOW.js --><script>(new WOW).init()</script><!-- Performance Optimizations --><script>document.addEventListener("DOMContentLoaded",function(){var e=[].slice.call(document.querySelectorAll("img[data-src]"));if("IntersectionObserver"in window){let t=new IntersectionObserver(function(e,s){e.forEach(function(e){e.isIntersecting&&((e=e.target).src=e.dataset.src,e.removeAttribute("data-src"),t.unobserve(e))})});e.forEach(function(e){t.observe(e)})}});let preloadLinks=["./assets/css/tailwind.css","./assets/css/animate.css","./assets/img/MONAI-logo_color.png"];preloadLinks.forEach(e=>{var s=document.createElement("link");s.href=e,s.rel="preload",s.as=e.endsWith(".css")?"style":"image",document.head.appendChild(s)})</script></body></html>
+    }
+    </script>
+    
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head> 
+<script>
+    document.head.innerHTML = document.head.innerHTML
+        .replace('${title}', 'MONAI - Documentation')
+        .replace('${description}', 'MONAI offers several frameworks, and we are adding to them all the time. Here, you\'ll find the information you need to decide on what framework works best for your needs.')
+        .replace('${canonical_url}', 'https://monai.io/docs.html');
+</script>
+
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header Component -->
+<header id="header-wrap" class="relative border-b border-neutral-neutral_gray2">
+  <div class="navigation top-0 left-0 w-full z-30">
+    <div class="container relative">
+      <nav class="flex items-center justify-between py-4" x-data="{ isOpen: false, isMenuOpen: false }">
+        <!-- Logo -->
+        <a class="flex-shrink-0" href="index.html">
+          <img class="h-8" src="assets/img/MONAI-logo_color.png" alt="Logo">
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center space-x-8">
+          <a class="text-gray-700 hover:text-brand-primary transition-colors" href="index.html">Home</a>
+          <a class="text-gray-700 hover:text-brand-primary transition-colors" href="core.html">MONAI Core</a>
+          <a class="text-gray-700 hover:text-brand-primary transition-colors" href="label.html">MONAI Label</a>
+          <a class="text-gray-700 hover:text-brand-primary transition-colors" href="deploy.html">MONAI Deploy</a>
+          <a class="text-gray-700 hover:text-brand-primary transition-colors" href="model-zoo.html">Model Zoo</a>
+          
+          <div class="relative" @click.away="isMenuOpen = false">
+            <button @click="isMenuOpen = !isMenuOpen" class="flex items-center text-gray-700 hover:text-brand-primary transition-colors">
+              Community
+              <svg class="w-4 h-4 ml-1" :class="{'rotate-180': isMenuOpen}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+            <div x-show="isMenuOpen" x-cloak x-transition class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+              <a href="https://github.com/Project-MONAI" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">GitHub</a>
+              <a href="https://join.slack.com/t/projectmonai/shared_invite/zt-2t7z8e9tu-xE5SPw0TC8LUxyPVpl2WVQ" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Join Slack</a>
+              <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About Us</a>
+              <div class="border-t border-gray-100 mt-2 pt-2">
+                <a href="https://twitter.com/ProjectMONAI" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Twitter</a>
+                <a href="https://linkedin.com/company/projectmonai" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">LinkedIn</a>
+                <a href="https://medium.com/@monai" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Medium</a>
+                <a href="https://www.youtube.com/c/Project-MONAI" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">YouTube</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button @click="isOpen = !isOpen" class="lg:hidden focus:outline-none" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path x-show="!isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            <path x-show="isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+
+        <!-- Mobile menu -->
+        <div x-show="isOpen" x-cloak 
+             class="lg:hidden fixed inset-0 z-50 bg-white"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 transform -translate-y-2"
+             x-transition:enter-end="opacity-100 transform translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 transform translate-y-0"
+             x-transition:leave-end="opacity-0 transform -translate-y-2">
+          <div class="container py-4">
+            <div class="flex justify-between items-center mb-8">
+              <a class="flex-shrink-0" href="index.html">
+                <img class="h-8" src="assets/img/MONAI-logo_color.png" alt="Logo">
+              </a>
+              <button @click="isOpen = false" class="focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </button>
+            </div>
+            <div class="space-y-4">
+              <a class="block py-2 text-gray-700 hover:text-brand-primary text-lg" href="index.html">Home</a>
+              <a class="block py-2 text-gray-700 hover:text-brand-primary text-lg" href="core.html">MONAI Core</a>
+              <a class="block py-2 text-gray-700 hover:text-brand-primary text-lg" href="label.html">MONAI Label</a>
+              <a class="block py-2 text-gray-700 hover:text-brand-primary text-lg" href="deploy.html">MONAI Deploy</a>
+              <a class="block py-2 text-gray-700 hover:text-brand-primary text-lg" href="model-zoo.html">Model Zoo</a>
+              
+              <div class="py-2">
+                <button @click="isMenuOpen = !isMenuOpen" class="w-full flex items-center justify-between py-2 text-gray-700 hover:text-brand-primary text-lg">
+                  Community
+                  <svg class="w-4 h-4" :class="{'rotate-180': isMenuOpen}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                  </svg>
+                </button>
+                <div x-show="isMenuOpen" x-cloak class="pl-4 space-y-2 mt-2">
+                  <a href="https://github.com/Project-MONAI" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">GitHub</a>
+                  <a href="https://join.slack.com/t/projectmonai/shared_invite/zt-2t7z8e9tu-xE5SPw0TC8LUxyPVpl2WVQ" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">Join Slack</a>
+                  <a href="about.html" class="block py-2 text-gray-700 hover:text-brand-primary">About Us</a>
+                  <div class="border-t border-gray-100 mt-2 pt-2">
+                    <a href="https://twitter.com/ProjectMONAI" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">Twitter</a>
+                    <a href="https://linkedin.com/company/projectmonai" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">LinkedIn</a>
+                    <a href="https://medium.com/@monai" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">Blog</a>
+                    <a href="https://www.youtube.com/c/Project-MONAI" target="_blank" class="block py-2 text-gray-700 hover:text-brand-primary">YouTube</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header> 
+
+    <main class="flex-grow">
+        <!-- Documentation Hero Section -->
+        <section id="hero" class="py-16">
+            <div class="container">
+                <div class="flex flex-wrap items-center">
+                    <div class="w-full lg:w-1/2">
+                        <h1 class="mb-6 section-heading">Documentation</h1>
+                        <div class="w-full sm:3/5">
+                            <p class="py-2">MONAI offers several frameworks, and we are adding to them all the time. Here, you'll find the information you need to decide on what framework works best for your needs.</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-center w-full lg:w-1/2">
+                        <img class="hidden lg:block lg:w-3/4 xl:auto" src="assets/img/documentation header.png" alt="Documentation illustration">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-8 bg-brand-light">
+            <div class="container py-4 lg:py-16">
+                <div class="grid grid-cols-12 gap-8">
+                    <div class="hidden lg:block col-span-3 justify-self-center self-center">
+                        <div class="flex square rounded-full justify-center bg-white p-8 shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="assets/img/pytorch_icon_large.png" alt="PyTorch Icon" class="w-full h-auto">
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-6 lg:pl-8">
+                        <h2 class="text-brand-primary text-2xl font-semibold">MONAI Core</h2>
+                        <p class="py-4">Domain-optimized foundational capabilities for developing healthcare imaging training workflows in a native PyTorch paradigm.</p>
+                        <a href="https://docs.monai.io/en/stable/" target="_blank" rel="noopener noreferrer" class="inline-block">
+                            <button class="rounded-full my-4 px-10 py-4 mt-4 text-brand-primary bg-brand-light border-2 border-brand-primary hover:bg-brand-primary hover:text-white transition-colors duration-300">Go to Docs</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-8 bg-neutral-lightgray">
+            <div class="container py-4 lg:py-16">
+                <div class="grid grid-cols-12 gap-8">
+                    <div class="hidden lg:block col-span-3 justify-self-center self-center">
+                        <div class="flex square rounded-full justify-center bg-white p-8 shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="assets/img/bookmark_icon_large.png" alt="Label Icon" class="w-full h-auto">
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-6 lg:pl-8">
+                        <h2 class="text-brand-primary text-2xl font-semibold">MONAI Label</h2>
+                        <p class="py-4">Image Labeling and Learning Tool that helps create annotated datasets and build AI models in a standardized MONAI paradigm.</p>
+                        <a href="https://docs.monai.io/projects/label/en/latest/" target="_blank" rel="noopener noreferrer" class="inline-block">
+                            <button class="rounded-full my-4 px-10 py-4 mt-4 text-brand-primary bg-neutral-lightgray border-2 border-brand-primary hover:bg-brand-primary hover:text-white transition-colors duration-300">Go to Docs</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-8">
+            <div class="container py-4 lg:py-16">
+                <div class="grid grid-cols-12 gap-8">
+                    <div class="hidden lg:block col-span-3 justify-self-center self-center">
+                        <div class="flex square rounded-full justify-center bg-brand-light p-8 shadow-lg hover:shadow-xl transition-shadow">
+                            <img src="assets/img/stack_icon_large.png" alt="Deploy Icon" class="w-full h-auto">
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-6 lg:pl-8">
+                        <h2 class="text-brand-primary text-2xl font-semibold">MONAI Deploy</h2>
+                        <p class="py-4">A framework and associated tools to design, verify and analyze the performance of AI-driven applications in the healthcare domain.</p>
+                        <a href="https://docs.monai.io/projects/monai-deploy-app-sdk/en/latest/" target="_blank" rel="noopener noreferrer" class="inline-block">
+                            <button class="rounded-full my-4 px-10 py-4 mt-4 text-brand-primary border-2 border-brand-primary hover:bg-brand-primary hover:text-white transition-colors duration-300">Go to Docs</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component -->
+<footer id="footer" class="py-2 border-t border-neutral-light_gray">
+  <div class="container">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <!-- Logo Section -->
+      <div class="w-auto flex-shrink-0">
+        <div class="mx-3">
+          <div class="footer-logo">
+            <a href="index.html"><img src="./assets/img/MONAI-logo_color.png" alt="MONAI Logo"></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Links - Hidden on mobile, flex on larger screens -->
+      <div class="hidden lg:block flex-grow">
+        <div class="mx-3 text-black">
+          <ul class="flex flex-wrap justify-center gap-x-4 gap-y-2">
+            <li>
+              <a href="core.html" class="footer-links whitespace-nowrap">MONAI Core</a>
+            </li>
+            <li>
+              <a href="label.html" class="footer-links whitespace-nowrap">MONAI Label</a>
+            </li>
+            <li>
+              <a href="deploy.html" class="footer-links whitespace-nowrap">MONAI Deploy</a>
+            </li>
+            <li>
+              <a href="community.html" class="footer-links whitespace-nowrap">Community</a>
+            </li>
+            <li>
+              <a href="model-zoo.html" class="footer-links whitespace-nowrap">Model Zoo</a>
+            </li>
+            <li>
+              <a href="https://github.com/Project-MONAI" class="footer-links whitespace-nowrap">GitHub</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Social Icons - Always visible, right-aligned -->
+      <div class="w-auto flex-shrink-0">
+        <div class="mx-3">
+          <ul class="social-icons flex items-center gap-4">
+            <li>
+              <a href="https://twitter.com/ProjectMONAI" aria-label="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 16 16">
+                  <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/company/projectmonai" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 16 16">
+                  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://medium.com/@monai" aria-label="Medium">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 16 16">
+                  <path d="M9.025 8c0 2.485-2.02 4.5-4.513 4.5A4.506 4.506 0 0 1 0 8c0-2.486 2.02-4.5 4.512-4.5A4.506 4.506 0 0 1 9.025 8m4.95 0c0 2.34-1.01 4.236-2.256 4.236S9.463 10.339 9.463 8c0-2.34 1.01-4.236 2.256-4.236S13.975 5.661 13.975 8M16 8c0 2.096-.355 3.795-.794 3.795-.438 0-.793-1.7-.793-3.795 0-2.096.355-3.795.794-3.795.438 0 .793 1.699.793 3.795"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/c/Project-MONAI" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 16 16">
+                  <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Go to Top Link -->
+<a href="#" class="back-to-top w-10 h-10 fixed bottom-0 right-0 mb-5 mr-5 flex items-center justify-center rounded-full border border-solid border-brand-dark text-white text-lg z-20" aria-label="Back to top">
+  <i class="transform -rotate-90">
+    <img src="./assets/img/ic_arrow_right.png" alt="Arrow Up"/>
+  </i>
+</a> 
+    <!-- Scripts Component -->
+<!-- Common JavaScript Files -->
+<script src="./assets/js/wow.js"></script>
+<script src="./assets/js/particles.min.js"></script>
+<script src="./assets/js/countUp.min.js"></script>
+<script src="./assets/js/main.js"></script>
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<!-- Initialize WOW.js -->
+<script>
+    new WOW().init();
+</script>
+
+<!-- Performance Optimizations -->
+<script>
+    // Defer non-critical images
+    document.addEventListener('DOMContentLoaded', function() {
+        var lazyImages = [].slice.call(document.querySelectorAll('img[data-src]'));
+        
+        if ('IntersectionObserver' in window) {
+            let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        let lazyImage = entry.target;
+                        lazyImage.src = lazyImage.dataset.src;
+                        lazyImage.removeAttribute('data-src');
+                        lazyImageObserver.unobserve(lazyImage);
+                    }
+                });
+            });
+
+            lazyImages.forEach(function(lazyImage) {
+                lazyImageObserver.observe(lazyImage);
+            });
+        }
+    });
+
+    // Preload critical resources
+    const preloadLinks = [
+        './assets/css/tailwind.css',
+        './assets/css/animate.css',
+        './assets/img/MONAI-logo_color.png'
+    ];
+
+    preloadLinks.forEach(link => {
+        const preloadLink = document.createElement('link');
+        preloadLink.href = link;
+        preloadLink.rel = 'preload';
+        preloadLink.as = link.endsWith('.css') ? 'style' : 'image';
+        document.head.appendChild(preloadLink);
+    });
+</script>
+
+<!-- Common Scripts -->
+<script src="assets/js/copy-buttons.js"></script> 
+
+</body>
+</html>
