@@ -49,20 +49,56 @@ jobs:
 
       - name: Copy assets and data
         run: |
-          cp -r assets dist/ || true
+          # Create necessary directories
+          mkdir -p dist/assets/css
+          mkdir -p dist/assets/js
+          mkdir -p dist/assets/fonts
+          mkdir -p dist/assets/img
+          
+          # Copy all assets maintaining directory structure
+          cp -r assets/* dist/assets/
+          
+          # Copy other necessary directories and files
           cp -r apps dist/ || true
           cp -r research dist/ || true
           cp -r images dist/ || true
-          cp -r src/style.css dist/ || true
-          cp -r assets/css dist/assets/ || true
-          cp -r assets/js dist/assets/ || true
-          cp -r assets/fonts dist/assets/ || true
-          cp model_data.json dist/ || true
+          cp -r src/* dist/ || true
+          cp scripts/model_data.json dist/ || true
+          cp *.html dist/ || true
+          
+          # Debug output for model_data.json
+          echo "Checking model_data.json locations:"
+          find . -name model_data.json -ls
+          
+          # Ensure proper file permissions
+          find dist -type f -name "*.css" -exec chmod 644 {} \;
+          find dist -type f -name "*.js" -exec chmod 644 {} \;
+          find dist -type f -name "*.html" -exec chmod 644 {} \;
+          find dist -type f -name "*.json" -exec chmod 644 {} \;
+          
+          # Debug output
+          echo "Contents of dist directory:"
+          ls -la dist/
+          echo "Contents of dist/assets:"
+          ls -la dist/assets/
 
-      - name: Update paths in HTML files
+      - name: Update paths for GitHub Pages
         run: |
-          find dist -type f -name "*.html" -exec sed -i 's/href="\//href="/g' {} +
-          find dist -type f -name "*.html" -exec sed -i 's/src="\//src="/g' {} +
+          # Get the repository name for base path
+          REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
+          
+          # Update paths in HTML files
+          find dist -type f -name "*.html" -exec sed -i "s|href=\"/|href=\"/${REPO_NAME}/|g" {} +
+          find dist -type f -name "*.html" -exec sed -i "s|src=\"/|src=\"/${REPO_NAME}/|g" {} +
+          find dist -type f -name "*.html" -exec sed -i "s|url(\"/|url(\"/${REPO_NAME}/|g" {} +
+          
+          # Update paths in CSS files
+          find dist -type f -name "*.css" -exec sed -i "s|url(\"/|url(\"/${REPO_NAME}/|g" {} +
+          
+          # Debug output
+          echo "Repository name: ${REPO_NAME}"
+          echo "Sample of processed HTML file:"
+          head -n 20 dist/index.html || true
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
