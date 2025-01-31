@@ -16,6 +16,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -24,6 +29,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Run fetch script
+        run: python scripts/fetch.py
 
       - name: Build site
         run: npm run build
@@ -38,6 +46,7 @@ jobs:
           cp -r assets/css dist/assets/ || true
           cp -r assets/js dist/assets/ || true
           cp -r assets/fonts dist/assets/ || true
+          cp model_data.json dist/ || true
 
       - name: Update paths in HTML files
         run: |
