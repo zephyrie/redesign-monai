@@ -82,7 +82,7 @@ li::marker {
     content: url("../img/title_decoration.png");
   }
 
-  @variants responsive {
+  @layer utilities {
     .section-heading-long:after {
       @apply mb-4;
       display: block;
