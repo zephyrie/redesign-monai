@@ -508,7 +508,7 @@ li::marker {
     @apply transform scale-x-100 origin-left;
   }
   .link-hover:hover {
-    @apply text-brand-primary-dark transition-colors duration-300;
+    @apply text-brand-dark transition-colors duration-300;
   }
 
   /* Working Group Main Heading */
@@ -820,5 +820,10 @@ pre, code {
   .container {
     max-width: 1280px;
   }
+}
+
+/* Working Group link hover styles */
+.wg-lead-profile:hover {
+    @apply text-brand-dark transition-colors duration-300;
 }
 

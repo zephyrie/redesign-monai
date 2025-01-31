@@ -1,14 +1,11 @@
-const plugin = require('tailwindcss/plugin')
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
-        './index.html',
-        './components/**/*.html',
-        './src/**/*.{js,jsx}',
-        './assets/css/**/*.css',
-        './dist/**/*.html',
-        './templates/**/*.html',
-        './pages/**/*.html'
+        './*.html',
+        './src/**/*.{html,js}',
+        './assets/**/*.{html,js}',
+        './apps/**/*.{html,js}',
+        './research/**/*.{html,js}'
     ],
     theme: {
         container: {
@@ -24,22 +21,14 @@ module.exports = {
             },
             colors: {
                 brand: {
-                    DEFAULT: '#5DC1B7',
-                    primary: {
-                        DEFAULT: '#02A3A3',
-                        light: '#E6F3F7',
-                        dark: '#017373'
-                    },
-                    secondary: '#98D9D5',
-                    light: '#E6F3F7',
-                    dark: '#05789E'
+                    DEFAULT: '#05789e',
+                    primary: '#05789e',
+                    dark: '#046483',
+                    light: '#e6f3f7'
                 },
                 neutral: {
-                    darkestblack: '#272727',
-                    gray1: '#5D5D5D',
-                    gray2: '#BEBEBE',
-                    lightgray: '#F5F5F5',
-                    purewhite: '#FFFFFF'
+                    purewhite: '#ffffff',
+                    darkestblack: '#1a1a1a'
                 }
             },
             display: ['hover', 'group-hover'],
@@ -52,9 +41,9 @@ module.exports = {
                     css: {
                         color: '#5D5D5D',
                         a: {
-                            color: '#02A3A3',
+                            color: '#05789e',
                             '&:hover': {
-                                color: '#05789E',
+                                color: '#046483',
                             },
                         },
                     },
