@@ -1,9 +1,11 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy
 
 on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 0 * * 1'  # Run weekly on Mondays at midnight UTC
 
 # Add permissions to allow deployment
 permissions:
@@ -13,13 +15,25 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Website
         uses: actions/checkout@v3
+
+      - name: Checkout Model Zoo
+        uses: actions/checkout@v3
+        with:
+          repository: Project-MONAI/model-zoo
+          path: scripts/model-zoo
 
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
+
+      - name: Install Python dependencies
+        run: pip install requests beautifulsoup4 markdown
+
+      - name: Fetch and process model data
+        run: python scripts/fetch.py
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -30,13 +44,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run fetch script
-        run: python scripts/fetch.py
-
       - name: Build site
         run: npm run build
 
-      - name: Copy additional assets
+      - name: Copy assets and data
         run: |
           cp -r assets dist/ || true
           cp -r apps dist/ || true
