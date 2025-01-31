@@ -44,12 +44,7 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Build Tailwind CSS
-        run: |
-          echo "Building Tailwind CSS..."
-          npx tailwindcss -i ./assets/css/style.css -o ./dist/assets/css/tailwind.css --minify
-          
+         
       - name: Build site
         run: npm run build
 
@@ -70,7 +65,6 @@ jobs:
           cp -r images dist/ || true
           cp -r src/* dist/ || true
           cp scripts/model_data.json dist/ || true
-          cp *.html dist/ || true
           
           # Debug output for model_data.json
           echo "Checking model_data.json locations:"
@@ -87,24 +81,6 @@ jobs:
           ls -la dist/
           echo "Contents of dist/assets:"
           ls -la dist/assets/
-
-      - name: Update paths for GitHub Pages
-        run: |
-          # Get the repository name for base path
-          REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
-          
-          # Update paths in HTML files
-          find dist -type f -name "*.html" -exec sed -i "s|href=\"/|href=\"/${REPO_NAME}/|g" {} +
-          find dist -type f -name "*.html" -exec sed -i "s|src=\"/|src=\"/${REPO_NAME}/|g" {} +
-          find dist -type f -name "*.html" -exec sed -i "s|url(\"/|url(\"/${REPO_NAME}/|g" {} +
-          
-          # Update paths in CSS files
-          find dist -type f -name "*.css" -exec sed -i "s|url(\"/|url(\"/${REPO_NAME}/|g" {} +
-          
-          # Debug output
-          echo "Repository name: ${REPO_NAME}"
-          echo "Sample of processed HTML file:"
-          head -n 20 dist/index.html || true
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
