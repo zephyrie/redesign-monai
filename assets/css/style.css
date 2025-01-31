@@ -698,3 +698,127 @@ li::marker {
   }
 }
 
+/* Code block styling */
+pre, code {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-width: 100%;
+    display: block;
+    padding: 1rem;
+    background-color: rgb(249 250 251);
+    border-radius: 0.5rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: rgb(55 65 81);
+}
+
+/* Ensure code blocks don't overflow their containers */
+.prose pre {
+    margin: 0;
+    padding: 1rem;
+    background-color: rgb(249 250 251);
+    border: 1px solid rgb(229 231 235);
+    border-radius: 0.5rem;
+    overflow-x: auto;
+}
+
+/* Ensure inline code is properly styled */
+.prose code {
+    font-size: 0.875em;
+    font-weight: 600;
+    background-color: rgb(249 250 251);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    word-break: break-word;
+}
+
+@media (max-width: 640px) {
+    pre, code {
+        font-size: 0.75rem;
+    }
+}
+
+/* Content wrapper utilities */
+.content-wrapper {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.content-section {
+    @apply py-12 sm:py-16 lg:py-20;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Container max-width and responsive padding */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
