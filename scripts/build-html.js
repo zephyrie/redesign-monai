@@ -63,15 +63,20 @@ function copyStaticAssets() {
 }
 
 function replaceIncludes(content, components) {
-    // Handle both formats of includes
+    // Handle all formats of includes
     const patterns = [
         /<!-- #include file="\/components\/(.*?)" -->/g,
-        /<!-- #include file="components\/(.*?)" -->/g
+        /<!-- #include file="components\/(.*?)" -->/g,
+        /<!-- Include (.*?) Component -->/g
     ];
     
     let processed = content;
     patterns.forEach(pattern => {
         processed = processed.replace(pattern, (match, filename) => {
+            // For the new format, convert component name to filename
+            if (pattern.toString().includes('Include')) {
+                filename = filename.toLowerCase() + '.html';
+            }
             return components[filename] || '';
         });
     });
