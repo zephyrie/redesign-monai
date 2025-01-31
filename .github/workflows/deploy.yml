@@ -44,7 +44,18 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-         
+
+      - name: Build Tailwind CSS
+        run: |
+          echo "Building Tailwind CSS..."
+          npx tailwindcss -i ./assets/css/style.css -o ./dist/assets/css/tailwind.css --minify
+          
+      - name: Build model-zoo.js
+        run: |
+          echo "Building model-zoo.js..."
+          mkdir -p dist/assets/js
+          npx babel src/model-zoo.js --out-file dist/model-zoo.js --presets=@babel/preset-react
+          
       - name: Build site
         run: npm run build
 
