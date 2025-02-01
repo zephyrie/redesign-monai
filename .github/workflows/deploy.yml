@@ -54,7 +54,7 @@ jobs:
         run: |
           echo "Building model-zoo.js..."
           mkdir -p dist/assets/js
-          npx babel src/model-zoo.js --out-file dist/model-zoo.js --presets=@babel/preset-react
+          npx babel src/model-zoo.js --out-file dist/model-zoo.js --presets=@babel/preset-env,@babel/preset-react --plugins=@babel/plugin-transform-react-jsx
           
       - name: Build site
         run: npm run build

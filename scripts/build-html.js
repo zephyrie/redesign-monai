@@ -9,13 +9,15 @@ const DIST_DIR = 'dist';
 
 const minifyOptions = {
     collapseWhitespace: true,
+    conservativeCollapse: true,
+    preserveLineBreaks: true,
     removeComments: false,
     removeRedundantAttributes: true,
     removeScriptTypeAttributes: true,
     removeStyleLinkTypeAttributes: true,
     useShortDoctype: true,
-    minifyJS: true,
-    minifyCSS: true
+    minifyJS: false,
+    minifyCSS: false
 };
 
 function ensureDirectoryExists(dir) {
