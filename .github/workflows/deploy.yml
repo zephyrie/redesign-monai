@@ -70,11 +70,18 @@ jobs:
           # Copy all assets maintaining directory structure
           cp -r assets/* dist/assets/
           
+          # Preserve the built model-zoo.js
+          mv dist/model-zoo.js dist/model-zoo.js.built || true
+          
           # Copy other necessary directories and files
           cp -r apps dist/ || true
           cp -r research dist/ || true
           cp -r images dist/ || true
           cp -r src/* dist/ || true
+          
+          # Restore the built version
+          mv dist/model-zoo.js.built dist/model-zoo.js || true
+          
           cp scripts/model_data.json dist/ || true
           
           # Debug output for model_data.json
@@ -92,6 +99,10 @@ jobs:
           ls -la dist/
           echo "Contents of dist/assets:"
           ls -la dist/assets/
+          
+          # Verify model-zoo.js
+          echo "First few lines of model-zoo.js:"
+          head -n 5 dist/model-zoo.js || true
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
