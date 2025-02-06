@@ -1,24 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-const { minify } = require('html-minifier');
 const chokidar = require('chokidar');
 const glob = require('glob');
 
 const COMPONENTS_DIR = 'components';
 const DIST_DIR = 'dist';
-
-const minifyOptions = {
-    collapseWhitespace: true,
-    conservativeCollapse: true,
-    preserveLineBreaks: true,
-    removeComments: false,
-    removeRedundantAttributes: true,
-    removeScriptTypeAttributes: true,
-    removeStyleLinkTypeAttributes: true,
-    useShortDoctype: true,
-    minifyJS: false,
-    minifyCSS: false
-};
 
 function ensureDirectoryExists(dir) {
     if (!fs.existsSync(dir)) {
@@ -109,11 +95,6 @@ function processTemplate(template, components) {
     processed = processed.replace(/\${title}/g, metadata.title);
     processed = processed.replace(/\${description}/g, metadata.description);
     processed = processed.replace(/\${canonical_url}/g, metadata.canonical_url);
-    
-    // Minify in production
-    if (process.env.NODE_ENV === 'production') {
-        processed = minify(processed, minifyOptions);
-    }
     
     return processed;
 }
