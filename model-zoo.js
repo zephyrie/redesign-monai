@@ -280,8 +280,10 @@ function ModelZoo() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
+    className: "grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pr-8"
+  }, /*#__PURE__*/React.createElement("h1", {
     className: "text-4xl font-bold text-gray-800 mb-8 relative inline-block pb-2"
   }, "MONAI Model Zoo", /*#__PURE__*/React.createElement("span", {
     className: "absolute bottom-0 left-0 w-full h-0.5 bg-brand-primary"
@@ -329,7 +331,7 @@ function ModelZoo() {
     strokeWidth: "2",
     d: "M13 7l5 5m0 0l-5 5m5-5H6"
   }))))), /*#__PURE__*/React.createElement("div", {
-    className: "hidden lg:block"
+    className: "hidden lg:block pl-8"
   }, /*#__PURE__*/React.createElement("div", {
     className: "relative w-full max-w-lg transform hover:scale-105 transition-transform duration-300"
   }, /*#__PURE__*/React.createElement("img", {
