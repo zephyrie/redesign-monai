@@ -245,8 +245,8 @@ function ModelZoo() {
     <div className="min-h-screen bg-gray-50">
       <section className="py-24 bg-white">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="pr-8">
               <h1 className="text-4xl font-bold text-gray-800 mb-8 relative inline-block pb-2">
                 MONAI Model Zoo
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-brand-primary"></span>
@@ -290,7 +290,7 @@ function ModelZoo() {
                 </a>
               </div>
             </div>
-            <div className="hidden lg:block">
+            <div className="hidden lg:block pl-8">
               <div className="relative w-full max-w-lg transform hover:scale-105 transition-transform duration-300">
                 <img
                   className="w-full h-auto rounded-lg"
