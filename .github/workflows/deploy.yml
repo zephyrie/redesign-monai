@@ -67,22 +67,27 @@ jobs:
           mkdir -p dist/assets/fonts
           mkdir -p dist/assets/img
           
-          # Copy all assets maintaining directory structure
-          cp -r assets/* dist/assets/
-          
-          # Preserve the built model-zoo.js
+          # Step 1: Preserve built files
+          mv dist/assets/css/tailwind.css dist/assets/css/tailwind.css.built || true
           mv dist/model-zoo.js dist/model-zoo.js.built || true
           
-          # Copy other necessary directories and files
+          # Create a temporary directory for built HTML files
+          mkdir -p dist/html_built
+          mv dist/*.html dist/html_built/ || true
+          
+          # Step 2: Copy all static assets and source files
+          cp -r assets/* dist/assets/
           cp -r apps dist/ || true
           cp -r research dist/ || true
           cp -r images dist/ || true
           cp -r src/* dist/ || true
-          
-          # Restore the built version
-          mv dist/model-zoo.js.built dist/model-zoo.js || true
-          
           cp scripts/model_data.json dist/ || true
+          
+          # Step 3: Restore built files
+          mv dist/assets/css/tailwind.css.built dist/assets/css/tailwind.css || true
+          mv dist/model-zoo.js.built dist/model-zoo.js || true
+          mv dist/html_built/*.html dist/ || true
+          rm -rf dist/html_built
           
           # Debug output for model_data.json
           echo "Checking model_data.json locations:"
@@ -100,9 +105,13 @@ jobs:
           echo "Contents of dist/assets:"
           ls -la dist/assets/
           
-          # Verify model-zoo.js
+          # Verify built files
           echo "First few lines of model-zoo.js:"
           head -n 5 dist/model-zoo.js || true
+          echo "First few lines of tailwind.css:"
+          head -n 5 dist/assets/css/tailwind.css || true
+          echo "Listing HTML files:"
+          ls -la dist/*.html || true
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
