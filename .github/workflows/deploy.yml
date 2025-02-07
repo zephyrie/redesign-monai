@@ -5,8 +5,6 @@ on:
   push:
     branches:
       - main
-  schedule:
-    - cron: '0 0 * * 1'  # Run weekly on Mondays at midnight UTC
 
 # Add permissions to allow deployment
 permissions:
@@ -25,93 +23,35 @@ jobs:
           repository: Project-MONAI/model-zoo
           path: scripts/model-zoo
 
-      - name: Setup Python
+      - name: Setup Python and Node
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-
-      - name: Install Python dependencies
-        run: pip install requests beautifulsoup4 markdown
-
-      - name: Fetch and process model data
-        run: python scripts/fetch.py
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install Dependencies
+        run: |
+          pip install requests beautifulsoup4 markdown
+          npm install
 
-      - name: Build Tailwind CSS
+      - name: Build Site
         run: |
-          echo "Building Tailwind CSS..."
-          npx tailwindcss -i ./assets/css/style.css -o ./dist/assets/css/tailwind.css --minify
-          
-      - name: Build model-zoo.js
-        run: |
-          echo "Building model-zoo.js..."
-          mkdir -p dist/assets/js
+          # Clean dist directory
+          rm -rf dist
+          mkdir -p dist
+
+          # Process model data
+          python scripts/fetch.py
+
+          # Build files
+          npm run build
           npx babel src/model-zoo.js --out-file dist/model-zoo.js --presets=@babel/preset-env,@babel/preset-react --plugins=@babel/plugin-transform-react-jsx
-          
-      - name: Build site
-        run: npm run build
 
-      - name: Copy assets and data
-        run: |
-          # Create necessary directories
-          mkdir -p dist/assets/css
-          mkdir -p dist/assets/js
-          mkdir -p dist/assets/fonts
-          mkdir -p dist/assets/img
-          
-          # Step 1: Preserve built files
-          mv dist/assets/css/tailwind.css dist/assets/css/tailwind.css.built || true
-          mv dist/model-zoo.js dist/model-zoo.js.built || true
-          
-          # Create a temporary directory for built HTML files
-          mkdir -p dist/html_built
-          mv dist/*.html dist/html_built/ || true
-          
-          # Step 2: Copy all static assets and source files
-          cp -r assets/* dist/assets/
-          cp -r apps dist/ || true
-          cp -r research dist/ || true
-          cp -r images dist/ || true
-          cp -r src/* dist/ || true
-          cp scripts/model_data.json dist/ || true
-          
-          # Step 3: Restore built files
-          mv dist/assets/css/tailwind.css.built dist/assets/css/tailwind.css || true
-          mv dist/model-zoo.js.built dist/model-zoo.js || true
-          mv dist/html_built/*.html dist/ || true
-          rm -rf dist/html_built
-          
-          # Debug output for model_data.json
-          echo "Checking model_data.json locations:"
-          find . -name model_data.json -ls
-          
-          # Ensure proper file permissions
-          find dist -type f -name "*.css" -exec chmod 644 {} \;
-          find dist -type f -name "*.js" -exec chmod 644 {} \;
-          find dist -type f -name "*.html" -exec chmod 644 {} \;
-          find dist -type f -name "*.json" -exec chmod 644 {} \;
-          
-          # Debug output
-          echo "Contents of dist directory:"
-          ls -la dist/
-          echo "Contents of dist/assets:"
-          ls -la dist/assets/
-          
-          # Verify built files
-          echo "First few lines of model-zoo.js:"
-          head -n 5 dist/model-zoo.js || true
-          echo "First few lines of tailwind.css:"
-          head -n 5 dist/assets/css/tailwind.css || true
-          echo "Listing HTML files:"
-          ls -la dist/*.html || true
+          # Copy necessary files
+          cp scripts/model_data.json dist/
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
