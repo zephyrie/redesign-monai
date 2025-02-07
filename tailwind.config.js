@@ -46,7 +46,6 @@ module.exports = {
                                 color: '#046483',
                             },
                         },
-                        '--tw-prose-code': 'text-gray-800',
                     },
                 },
             }

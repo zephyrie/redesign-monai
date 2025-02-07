@@ -200,7 +200,7 @@ function ModelDetailsModal({ model, onClose }) {
                 prose-ol:text-gray-800 prose-ol:leading-relaxed
                 prose-li:text-gray-800
                 prose-a:text-brand-primary prose-a:no-underline hover:prose-a:text-brand-dark
-                prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded
+                !prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded
                 prose-pre:bg-gray-100">
                 <div 
                   className="overflow-x-auto prose-img:max-w-full prose-img:h-auto prose-pre:whitespace-pre-wrap prose-pre:break-words prose-table:w-full prose-table:block prose-table:overflow-x-auto"
