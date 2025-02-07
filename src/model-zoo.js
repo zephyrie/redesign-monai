@@ -291,7 +291,7 @@ function ModelZoo() {
               </div>
             </div>
             <div className="hidden lg:block pl-8">
-              <div className="relative w-full max-w-lg transform hover:scale-105 transition-transform duration-300">
+              <div className="relative w-full max-w-lg">
                 <img
                   className="w-full h-auto rounded-lg"
                   src="assets/img/community_header.png"
