@@ -251,11 +251,11 @@ function ModelZoo() {
                 MONAI Model Zoo
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-brand-primary"></span>
               </h1>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                Discover and download state-of-the-art medical imaging models in the MONAI Bundle format.
-              </p>
               <div className="prose max-w-none">
-                <p className="text-gray-600 mb-6">
+                <p className="text-lg leading-relaxed text-gray-700">
+                  Discover and download state-of-the-art medical imaging models in the MONAI Bundle format.
+                </p>
+                <p className="text-lg leading-relaxed text-gray-700">
                   The MONAI Model Zoo is a collection of pre-trained medical imaging models, 
                   ready for research and clinical deployment. Each model is packaged in the 
                   <a className="text-brand-primary hover:text-brand-dark transition-colors mx-1" 
@@ -264,7 +264,7 @@ function ModelZoo() {
                      rel="noopener noreferrer">MONAI Bundle</a>
                   format, ensuring reproducibility and ease of use.
                 </p>
-                <p className="text-gray-600">
+                <p className="text-lg leading-relaxed text-gray-700">
                   Our models cover a wide range of medical imaging tasks, from segmentation 
                   to classification, and are validated through rigorous testing and real-world 
                   applications. Whether you're a researcher, clinician, or developer, you'll 
