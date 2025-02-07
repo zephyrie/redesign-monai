@@ -732,6 +732,7 @@ pre, code {
     padding: 0.2em 0.4em;
     border-radius: 0.25rem;
     word-break: break-word;
+    color: text-gray-900 !important;
 }
 
 @media (max-width: 640px) {
