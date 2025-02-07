@@ -1,17 +1,23 @@
-const {
-  useState,
-  useEffect
-} = React;
+"use strict";
+
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+var _React = React,
+  useState = _React.useState,
+  useEffect = _React.useEffect;
 function formatDownloadUrl(model) {
   // Extract model name and version
-  const modelName = model.model_name.toLowerCase().replace(/\s+/g, '_');
-  const version = model.version;
-  return `https://proxy.monai.io/proxy/download/${modelName}/versions/${version}/files/${modelName}_v${version}.zip`;
+  var modelName = model.model_name.toLowerCase().replace(/\s+/g, '_');
+  var version = model.version;
+  return "https://proxy.monai.io/proxy/download/".concat(modelName, "/versions/").concat(version, "/files/").concat(modelName, "_v").concat(version, ".zip");
 }
-function ModelCard({
-  model,
-  onViewDetails
-}) {
+function ModelCard(_ref) {
+  var model = _ref.model,
+    onViewDetails = _ref.onViewDetails;
   return /*#__PURE__*/React.createElement("div", {
     className: "p-4 sm:p-6 shadow-lg rounded-lg border-2 border-neutral-lightgray relative transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white"
   }, /*#__PURE__*/React.createElement("div", {
@@ -41,7 +47,9 @@ function ModelCard({
   })), /*#__PURE__*/React.createElement("span", null, "v", model.version))), /*#__PURE__*/React.createElement("div", {
     className: "flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center"
   }, /*#__PURE__*/React.createElement("button", {
-    onClick: () => onViewDetails(model),
+    onClick: function onClick() {
+      return onViewDetails(model);
+    },
     className: "flex items-center justify-center sm:justify-start text-brand-primary hover:text-brand-dark transition-colors py-2 sm:py-0 hover:underline"
   }, /*#__PURE__*/React.createElement("span", null, "View Details"), /*#__PURE__*/React.createElement("svg", {
     className: "w-4 h-4 ml-1.5 flex-shrink-0 transition-transform group-hover:translate-x-1",
@@ -69,26 +77,25 @@ function ModelCard({
     d: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
   })))))));
 }
-function ModelDetailsModal({
-  model,
-  onClose
-}) {
+function ModelDetailsModal(_ref2) {
+  var model = _ref2.model,
+    onClose = _ref2.onClose;
   if (!model) return null;
-  const handleBackdropClick = e => {
+  var handleBackdropClick = function handleBackdropClick(e) {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
 
   // Add escape key handler
-  useEffect(() => {
-    const handleEscapeKey = e => {
+  useEffect(function () {
+    var handleEscapeKey = function handleEscapeKey(e) {
       if (e.key === 'Escape') {
         onClose();
       }
     };
     document.addEventListener('keydown', handleEscapeKey);
-    return () => {
+    return function () {
       document.removeEventListener('keydown', handleEscapeKey);
     };
   }, [onClose]);
@@ -171,10 +178,12 @@ function ModelDetailsModal({
     className: "text-sm font-medium text-gray-500 mb-2"
   }, "References"), /*#__PURE__*/React.createElement("dd", null, /*#__PURE__*/React.createElement("ul", {
     className: "space-y-3"
-  }, model.papers.map((paper, index) => /*#__PURE__*/React.createElement("li", {
-    key: index,
-    className: "text-sm text-gray-600 pl-4 border-l-2 border-gray-300"
-  }, paper))))))), /*#__PURE__*/React.createElement("div", {
+  }, model.papers.map(function (paper, index) {
+    return /*#__PURE__*/React.createElement("li", {
+      key: index,
+      className: "text-sm text-gray-600 pl-4 border-l-2 border-gray-300"
+    }, paper);
+  })))))), /*#__PURE__*/React.createElement("div", {
     className: "bg-gray-50 rounded-lg p-4 sm:p-6"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center justify-between mb-4"
@@ -184,18 +193,23 @@ function ModelDetailsModal({
     className: "text-sm text-gray-500"
   }, "Showing last ", Math.min(8, Object.keys(model.changelog).length), " changes")), model.changelog ? /*#__PURE__*/React.createElement("div", {
     className: "space-y-3"
-  }, Object.entries(model.changelog).slice(0, 8).map(([version, changes], index) => /*#__PURE__*/React.createElement("div", {
-    key: index,
-    className: "flex gap-4 text-sm"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex-none"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-brand-primary font-medium"
-  }, "v", version)), /*#__PURE__*/React.createElement("div", {
-    className: "flex-1 break-words"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-gray-600"
-  }, changes))))) : /*#__PURE__*/React.createElement("p", {
+  }, Object.entries(model.changelog).slice(0, 8).map(function (_ref3, index) {
+    var _ref4 = _slicedToArray(_ref3, 2),
+      version = _ref4[0],
+      changes = _ref4[1];
+    return /*#__PURE__*/React.createElement("div", {
+      key: index,
+      className: "flex gap-4 text-sm"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex-none"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "text-brand-primary font-medium"
+    }, "v", version)), /*#__PURE__*/React.createElement("div", {
+      className: "flex-1 break-words"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "text-gray-600"
+    }, changes)));
+  })) : /*#__PURE__*/React.createElement("p", {
     className: "text-sm text-gray-600"
   }, "No changelog available"))), /*#__PURE__*/React.createElement("div", {
     className: "bg-gray-50 rounded-lg p-4 sm:p-6 mb-8"
@@ -240,12 +254,24 @@ function ModelDetailsModal({
   })))))));
 }
 function ModelZoo() {
-  const [models, setModels] = useState([]);
-  const [selectedModel, setSelectedModel] = useState(null);
-  useEffect(() => {
-    const url = './model_data.json';
+  var _useState = useState([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    models = _useState2[0],
+    setModels = _useState2[1];
+  var _useState3 = useState(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    selectedModel = _useState4[0],
+    setSelectedModel = _useState4[1];
+  useEffect(function () {
+    var url = './model_data.json';
     console.log('Fetching data from:', url);
-    fetch(url).then(response => response.json()).then(data => setModels(Object.values(data))).catch(error => console.error('Error fetching data:', error));
+    fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      return setModels(Object.values(data));
+    })["catch"](function (error) {
+      return console.error('Error fetching data:', error);
+    });
   }, []);
   return /*#__PURE__*/React.createElement("div", {
     className: "min-h-screen bg-gray-50"
@@ -318,13 +344,17 @@ function ModelZoo() {
     className: "text-3xl font-bold text-gray-800 mb-8"
   }, "Available Models"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-  }, models.map((model, index) => /*#__PURE__*/React.createElement(ModelCard, {
-    key: index,
-    model: model,
-    onViewDetails: setSelectedModel
-  }))))), selectedModel && /*#__PURE__*/React.createElement(ModelDetailsModal, {
+  }, models.map(function (model, index) {
+    return /*#__PURE__*/React.createElement(ModelCard, {
+      key: index,
+      model: model,
+      onViewDetails: setSelectedModel
+    });
+  })))), selectedModel && /*#__PURE__*/React.createElement(ModelDetailsModal, {
     model: selectedModel,
-    onClose: () => setSelectedModel(null)
+    onClose: function onClose() {
+      return setSelectedModel(null);
+    }
   }));
 }
 ReactDOM.render(/*#__PURE__*/React.createElement(ModelZoo, null), document.getElementById('app'));
