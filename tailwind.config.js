@@ -2,10 +2,10 @@
 module.exports = {
     content: [
         './*.html',
-        './src/**/*.{html,js}',
-        './assets/**/*.{html,js}',
-        './apps/**/*.{html,js}',
-        './research/**/*.{html,js}'
+        './components/**/*.html',
+        './assets/css/**/*.css',
+        './assets/js/**/*.js',
+        './src/**/*.js'
     ],
     theme: {
         container: {
@@ -13,28 +13,30 @@ module.exports = {
             padding: '1rem'
         },
         extend: {
-            zIndex: {
-                '-10': '-10',
-            },
-            inset: {
-                '100': '100%',
-            },
             colors: {
                 brand: {
                     DEFAULT: '#05789e',
-                    primary: '#05789e',
+                    primary: '#00C0B5',
+                    secondary: '#3E5CAD',
                     dark: '#046483',
                     light: '#e6f3f7'
                 },
                 neutral: {
                     purewhite: '#ffffff',
-                    darkestblack: '#1a1a1a'
+                    darkestblack: '#1a1a1a',
+                    light_gray: '#E5E7EB'
                 }
             },
-            display: ['hover', 'group-hover'],
-            gridTemplateColumns: {
-                '16': 'repeat(16, minmax(0, 1fr))',
-                '20': 'repeat(20, minmax(0, 1fr))'
+            spacing: {
+                '128': '32rem',
+            },
+            zIndex: {
+                '-10': '-10',
+                '60': '60',
+                '70': '70',
+            },
+            inset: {
+                '100': '100%',
             },
             typography: {
                 DEFAULT: {
@@ -51,18 +53,9 @@ module.exports = {
             }
         }
     },
-    variants: {
-        extend: {
-            opacity: ['disabled'],
-            cursor: ['disabled'],
-            backgroundColor: ['active', 'disabled'],
-            textColor: ['active', 'disabled']
-        }
-    },
     plugins: [
-        require('@tailwindcss/line-clamp'),
-        require('@tailwindcss/aspect-ratio'),
         require('@tailwindcss/typography'),
-        require("kutty")
+        require('@tailwindcss/aspect-ratio'),
+        require('@tailwindcss/line-clamp'),
     ],
 }

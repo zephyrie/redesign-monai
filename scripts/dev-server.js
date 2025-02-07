@@ -60,6 +60,7 @@ const params = {
     logLevel: 2,
     middleware: [componentMiddleware],
     mount: [
+        ['/assets', path.join(__dirname, '..', 'dist', 'assets')],
         ['/assets', path.join(__dirname, '..', 'assets')],
     ],
     mimeTypes: {
