@@ -333,7 +333,7 @@ function ModelZoo() {
   }))))), /*#__PURE__*/React.createElement("div", {
     className: "hidden lg:block pl-8"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "relative w-full max-w-lg transform hover:scale-105 transition-transform duration-300"
+    className: "relative w-full max-w-lg"
   }, /*#__PURE__*/React.createElement("img", {
     className: "w-full h-auto rounded-lg",
     src: "assets/img/community_header.png",
