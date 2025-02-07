@@ -47,12 +47,12 @@ jobs:
           # Process model data
           python scripts/fetch.py
 
-          # Build Tailwind CSS explicitly
-          npx tailwindcss -i ./assets/css/style.css -o ./dist/assets/css/tailwind.css --minify
-
           # Build files
           npm run build
           npx babel src/model-zoo.js --out-file dist/model-zoo.js --presets=@babel/preset-env,@babel/preset-react --plugins=@babel/plugin-transform-react-jsx
+
+          # Build Tailwind CSS explicitly
+          npx tailwindcss -i ./assets/css/style.css -o ./dist/assets/css/tailwind.css --minify
 
           # Copy necessary files
           cp scripts/model_data.json dist/
