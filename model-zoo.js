@@ -285,19 +285,19 @@ function ModelZoo() {
     className: "text-4xl font-bold text-gray-800 mb-8 relative inline-block pb-2"
   }, "MONAI Model Zoo", /*#__PURE__*/React.createElement("span", {
     className: "absolute bottom-0 left-0 w-full h-0.5 bg-brand-primary"
-  })), /*#__PURE__*/React.createElement("p", {
-    className: "text-lg text-gray-600 leading-relaxed mb-8"
-  }, "Discover and download state-of-the-art medical imaging models in the MONAI Bundle format."), /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("div", {
     className: "prose max-w-none"
   }, /*#__PURE__*/React.createElement("p", {
-    className: "text-gray-600 mb-6"
+    className: "text-lg leading-relaxed text-gray-700"
+  }, "Discover and download state-of-the-art medical imaging models in the MONAI Bundle format."), /*#__PURE__*/React.createElement("p", {
+    className: "text-lg leading-relaxed text-gray-700"
   }, "The MONAI Model Zoo is a collection of pre-trained medical imaging models, ready for research and clinical deployment. Each model is packaged in the", /*#__PURE__*/React.createElement("a", {
     className: "text-brand-primary hover:text-brand-dark transition-colors mx-1",
     href: "https://docs.monai.io/en/latest/bundle_intro.html",
     target: "_blank",
     rel: "noopener noreferrer"
   }, "MONAI Bundle"), "format, ensuring reproducibility and ease of use."), /*#__PURE__*/React.createElement("p", {
-    className: "text-gray-600"
+    className: "text-lg leading-relaxed text-gray-700"
   }, "Our models cover a wide range of medical imaging tasks, from segmentation to classification, and are validated through rigorous testing and real-world applications. Whether you're a researcher, clinician, or developer, you'll find models that can accelerate your medical AI journey.")), /*#__PURE__*/React.createElement("div", {
     className: "mt-8 flex flex-wrap gap-4"
   }, /*#__PURE__*/React.createElement("a", {
