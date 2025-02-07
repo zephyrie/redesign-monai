@@ -200,7 +200,7 @@ function ModelDetailsModal({
   }, "No changelog available"))), /*#__PURE__*/React.createElement("div", {
     className: "bg-gray-50 rounded-lg p-4 sm:p-6 mb-8"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "prose max-w-none prose-sm sm:prose  prose-headings:text-gray-900  prose-h1:text-2xl prose-h1:font-bold prose-h2:text-xl prose-h2:font-bold  prose-h3:text-lg prose-h3:font-semibold prose-p:text-gray-800 prose-p:leading-relaxed prose-strong:text-gray-900 prose-strong:font-semibold prose-ul:text-gray-800 prose-ul:leading-relaxed prose-ol:text-gray-800 prose-ol:leading-relaxed prose-li:text-gray-800 prose-a:text-brand-primary prose-a:no-underline hover:prose-a:text-brand-dark prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded prose-pre:bg-gray-100"
+    className: "prose max-w-none prose-sm sm:prose  prose-headings:text-gray-900  prose-h1:text-2xl prose-h1:font-bold prose-h2:text-xl prose-h2:font-bold  prose-h3:text-lg prose-h3:font-semibold prose-p:text-gray-800 prose-p:leading-relaxed prose-strong:text-gray-900 prose-strong:font-semibold prose-ul:text-gray-800 prose-ul:leading-relaxed prose-ol:text-gray-800 prose-ol:leading-relaxed prose-li:text-gray-800 prose-a:text-brand-primary prose-a:no-underline hover:prose-a:text-brand-dark !prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded prose-pre:bg-gray-100"
   }, /*#__PURE__*/React.createElement("div", {
     className: "overflow-x-auto prose-img:max-w-full prose-img:h-auto prose-pre:whitespace-pre-wrap prose-pre:break-words prose-table:w-full prose-table:block prose-table:overflow-x-auto",
     dangerouslySetInnerHTML: {
